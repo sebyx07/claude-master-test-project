@@ -38,7 +38,7 @@ Makefile
 *.exe
 *.out
 *.app
-todolist
+/todolist
 
 # Debug files
 *.dSYM/

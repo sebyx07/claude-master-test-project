@@ -1,42 +1,62 @@
 #include <iostream>
 #include <string>
-#include <vector>
-#include "todolist/version.h"
+#include <memory>
+#include <cstdlib>
+#include <unistd.h>
+#include "todolist/command_parser.h"
+#include "todolist/cli_handler.h"
+#include "todolist/database.h"
+#include "todolist/todo_repository.h"
+#include "todolist/formatter.h"
 
-void printUsage(const std::string& programName) {
-    std::cout << "TodoList CLI v" << TODOLIST_VERSION << "\n\n";
-    std::cout << "Usage: " << programName << " <command> [arguments]\n\n";
-    std::cout << "Commands:\n";
-    std::cout << "  add <title> [description]  - Add a new todo item\n";
-    std::cout << "  list [all|completed|pending] - List todo items\n";
-    std::cout << "  complete <id>              - Mark todo as completed\n";
-    std::cout << "  delete <id>                - Delete a todo item\n";
-    std::cout << "  search <query>             - Search todos by title\n";
-    std::cout << "  help                       - Show this help message\n";
+namespace {
+
+/**
+ * @brief Get the database file path
+ *
+ * Checks the TODOLIST_DB environment variable first, otherwise uses
+ * a default location in the user's home directory.
+ */
+std::string getDatabasePath() {
+    const char* envPath = std::getenv("TODOLIST_DB");
+    if (envPath != nullptr) {
+        return envPath;
+    }
+
+    // Default to current directory for now
+    // In a production app, we'd use $HOME/.local/share/todolist/todos.db or similar
+    return "todos.db";
 }
 
+} // anonymous namespace
+
 int main(int argc, char* argv[]) {
-    if (argc < 2) {
-        std::cerr << "Error: No command specified\n\n";
-        printUsage(argv[0]);
+    try {
+        // Parse command-line arguments
+        todolist::CommandParser parser;
+        auto parsedCmd = parser.parse(argc, argv);
+
+        // Set up database and repository
+        std::string dbPath = getDatabasePath();
+        todolist::Database database(dbPath);
+        todolist::TodoRepository repository(database);
+
+        // Set up formatter (detect if output is a TTY for color support)
+        bool useColor = isatty(fileno(stdout));
+        auto formatter = std::make_unique<todolist::Formatter>(useColor);
+
+        // Set up CLI handler
+        todolist::CliHandler handler(repository, std::move(formatter));
+
+        // Execute the command
+        return handler.execute(parsedCmd);
+
+    } catch (const todolist::DatabaseException& e) {
+        std::cerr << "Database error: " << e.what() << std::endl;
+        std::cerr << "Please check that the database file is accessible and not corrupted." << std::endl;
+        return 1;
+    } catch (const std::exception& e) {
+        std::cerr << "Fatal error: " << e.what() << std::endl;
         return 1;
     }
-
-    std::string command = argv[1];
-
-    if (command == "help" || command == "--help") {
-        printUsage(argv[0]);
-        return 0;
-    }
-
-    if (command == "version" || command == "--version") {
-        std::cout << "TodoList CLI v" << TODOLIST_VERSION << "\n";
-        return 0;
-    }
-
-    // Placeholder for actual command handling (will be implemented in PR 3)
-    std::cout << "Command '" << command << "' will be implemented in a future update.\n";
-    std::cout << "This is the foundation build (PR 1).\n";
-
-    return 0;
 }
