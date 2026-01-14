@@ -1,3 +1,11 @@
+/**
+ * @file exceptions.h
+ * @brief Custom exception hierarchy
+ *
+ * Defines application-specific exceptions for error handling throughout
+ * the todo list application.
+ */
+
 #ifndef TODOLIST_EXCEPTIONS_H
 #define TODOLIST_EXCEPTIONS_H
 

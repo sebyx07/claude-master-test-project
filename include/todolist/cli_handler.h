@@ -1,3 +1,11 @@
+/**
+ * @file cli_handler.h
+ * @brief Command handler for CLI operations
+ *
+ * Implements the business logic for each CLI command, coordinating
+ * between the repository layer and output formatting.
+ */
+
 #ifndef TODOLIST_CLI_HANDLER_H
 #define TODOLIST_CLI_HANDLER_H
 

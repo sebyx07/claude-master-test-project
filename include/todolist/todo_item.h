@@ -1,3 +1,11 @@
+/**
+ * @file todo_item.h
+ * @brief Data model for todo items
+ *
+ * Defines the TodoItem class which represents a single todo item with
+ * all its properties and operations.
+ */
+
 #ifndef TODOLIST_TODO_ITEM_H
 #define TODOLIST_TODO_ITEM_H
 
