@@ -1,6 +1,9 @@
 # Source files for the todolist executable
 add_executable(todolist
     main.cpp
+    todo_item.cpp
+    database.cpp
+    todo_repository.cpp
 )
 
 # Include directories
