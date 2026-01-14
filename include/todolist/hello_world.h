@@ -22,6 +22,16 @@ namespace todolist {
  */
 std::string printHelloWorld();
 
+/**
+ * @brief Generate a personalized greeting
+ * @param name The name to greet
+ * @return A personalized greeting string
+ *
+ * Returns a personalized greeting in the format "Hello, {name}!".
+ * If the name is empty or contains only whitespace, returns "Hello, there!"
+ */
+std::string hello(const std::string& name);
+
 } // namespace todolist
 
 #endif // TODOLIST_HELLO_WORLD_H
