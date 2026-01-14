@@ -6,6 +6,7 @@ add_executable(todolist
     formatter.cpp
     hello_world.cpp
     main.cpp
+    math_utils.cpp
     todo_item.cpp
     todo_repository.cpp
 )
