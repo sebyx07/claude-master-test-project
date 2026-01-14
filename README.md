@@ -1,6 +1,11 @@
 # Todo List CLI
 
+[![Built with claude-task-master](https://img.shields.io/badge/Built%20with-claude--task--master-blue)](https://github.com/sebyx07/claude-task-master)
+[![Built with Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-orange)](https://claude.ai/code)
+
 A production-quality command-line todo list manager built with modern C++17. Lightweight, fast, and easy to use.
+
+> **Note**: This entire project was autonomously built by [claude-task-master](https://github.com/sebyx07/claude-task-master) + [Claude Code](https://claude.ai/code) — from initial planning to final implementation, including all 97 tests, CI/CD setup, and documentation.
 
 ## Features
 
@@ -356,6 +361,8 @@ MIT License - see LICENSE file for details
 
 ## Acknowledgments
 
+- 🤖 **Autonomously built with [claude-task-master](https://github.com/sebyx07/claude-task-master)** - AI-powered autonomous development
+- 🧠 **Powered by [Claude Code](https://claude.ai/code)** - Anthropic's AI coding assistant
 - Built with [SQLite](https://www.sqlite.org/) - Public domain
 - Tested with [GoogleTest](https://github.com/google/googletest) - BSD-3-Clause
 - Built with [CMake](https://cmake.org/) - BSD-3-Clause
