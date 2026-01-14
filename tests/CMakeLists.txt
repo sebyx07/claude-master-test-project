@@ -24,6 +24,7 @@ add_executable(todolist_tests
     test_command_parser.cpp
     test_cli_handler.cpp
     test_hello_world.cpp
+    test_math_utils.cpp
 )
 
 # Add core library sources to test executable
@@ -35,6 +36,7 @@ target_sources(todolist_tests PRIVATE
     ${CMAKE_SOURCE_DIR}/src/formatter.cpp
     ${CMAKE_SOURCE_DIR}/src/cli_handler.cpp
     ${CMAKE_SOURCE_DIR}/src/hello_world.cpp
+    ${CMAKE_SOURCE_DIR}/src/math_utils.cpp
 )
 
 target_include_directories(todolist_tests
