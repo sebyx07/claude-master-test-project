@@ -15,10 +15,19 @@ FetchContent_MakeAvailable(googletest)
 # Enable GoogleTest
 include(GoogleTest)
 
-# Test executable placeholder
-# Will be populated in PR 2 with actual test files
+# Test executable with all test files
 add_executable(todolist_tests
     test_main.cpp
+    test_todo_item.cpp
+    test_database.cpp
+    test_todo_repository.cpp
+)
+
+# Add core library sources to test executable
+target_sources(todolist_tests PRIVATE
+    ${CMAKE_SOURCE_DIR}/src/todo_item.cpp
+    ${CMAKE_SOURCE_DIR}/src/database.cpp
+    ${CMAKE_SOURCE_DIR}/src/todo_repository.cpp
 )
 
 target_include_directories(todolist_tests
