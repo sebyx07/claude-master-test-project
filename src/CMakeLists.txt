@@ -1,12 +1,13 @@
 # Source files for the todolist executable
 add_executable(todolist
+    cli_handler.cpp
+    command_parser.cpp
+    database.cpp
+    formatter.cpp
+    hello_world.cpp
     main.cpp
     todo_item.cpp
-    database.cpp
     todo_repository.cpp
-    command_parser.cpp
-    formatter.cpp
-    cli_handler.cpp
 )
 
 # Include directories
