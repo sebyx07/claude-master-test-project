@@ -4,6 +4,9 @@ add_executable(todolist
     todo_item.cpp
     database.cpp
     todo_repository.cpp
+    command_parser.cpp
+    formatter.cpp
+    cli_handler.cpp
 )
 
 # Include directories

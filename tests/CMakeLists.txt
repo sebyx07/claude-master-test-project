@@ -21,6 +21,8 @@ add_executable(todolist_tests
     test_todo_item.cpp
     test_database.cpp
     test_todo_repository.cpp
+    test_command_parser.cpp
+    test_cli_handler.cpp
 )
 
 # Add core library sources to test executable
@@ -28,6 +30,9 @@ target_sources(todolist_tests PRIVATE
     ${CMAKE_SOURCE_DIR}/src/todo_item.cpp
     ${CMAKE_SOURCE_DIR}/src/database.cpp
     ${CMAKE_SOURCE_DIR}/src/todo_repository.cpp
+    ${CMAKE_SOURCE_DIR}/src/command_parser.cpp
+    ${CMAKE_SOURCE_DIR}/src/formatter.cpp
+    ${CMAKE_SOURCE_DIR}/src/cli_handler.cpp
 )
 
 target_include_directories(todolist_tests
