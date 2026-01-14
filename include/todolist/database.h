@@ -1,3 +1,11 @@
+/**
+ * @file database.h
+ * @brief SQLite database connection and management
+ *
+ * Provides RAII-based database connection management with automatic
+ * schema initialization and error handling.
+ */
+
 #ifndef TODOLIST_DATABASE_H
 #define TODOLIST_DATABASE_H
 

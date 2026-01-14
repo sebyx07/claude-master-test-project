@@ -1,3 +1,11 @@
+/**
+ * @file formatter.h
+ * @brief Output formatting utilities
+ *
+ * Provides formatting functions for pretty-printing todo items and messages
+ * with ANSI color support for improved terminal output.
+ */
+
 #ifndef TODOLIST_FORMATTER_H
 #define TODOLIST_FORMATTER_H
 

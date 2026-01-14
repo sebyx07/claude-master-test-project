@@ -1,3 +1,11 @@
+/**
+ * @file todo_repository.h
+ * @brief Data access layer for todo items
+ *
+ * Implements the repository pattern to provide a clean abstraction
+ * for CRUD operations and queries on todo items.
+ */
+
 #ifndef TODOLIST_TODO_REPOSITORY_H
 #define TODOLIST_TODO_REPOSITORY_H
 

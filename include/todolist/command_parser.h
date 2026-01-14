@@ -1,3 +1,11 @@
+/**
+ * @file command_parser.h
+ * @brief Command-line argument parsing
+ *
+ * Provides parsing functionality to convert command-line arguments into
+ * structured command objects with support for aliases and flags.
+ */
+
 #ifndef TODOLIST_COMMAND_PARSER_H
 #define TODOLIST_COMMAND_PARSER_H
 
