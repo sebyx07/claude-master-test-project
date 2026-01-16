@@ -16,6 +16,19 @@ int CliHandler::execute(const ParsedCommand& cmd) {
     try {
         std::string output;
 
+        // Check for --help flag to show context-sensitive help
+        if (cmd.hasFlag("help") || cmd.hasFlag("h")) {
+            if (cmd.command != Command::HELP && cmd.command != Command::UNKNOWN) {
+                std::string cmdStr = CommandParser::commandToString(cmd.command);
+                std::ostringstream oss;
+                oss << formatter_->formatHeader("Help for: " + cmdStr) << "\n";
+                oss << formatter_->separator() << "\n\n";
+                oss << CommandParser::getCommandHelp(cmd.command);
+                std::cout << oss.str() << std::endl;
+                return 0;
+            }
+        }
+
         switch (cmd.command) {
             case Command::ADD:
                 output = handleAdd(cmd.args);

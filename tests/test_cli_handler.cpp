@@ -249,6 +249,78 @@ TEST_F(CliHandlerTest, HandleVersion) {
     EXPECT_NE(result.find("Version"), std::string::npos);
 }
 
+// Test context-sensitive --help flag
+TEST_F(CliHandlerTest, ExecuteAddWithHelpFlag) {
+    ParsedCommand cmd;
+    cmd.command = Command::ADD;
+    cmd.options["help"] = "true";
+
+    int exitCode = handler->execute(cmd);
+    EXPECT_EQ(exitCode, 0);
+
+    // Verify no item was created
+    auto items = repository->findAll();
+    EXPECT_EQ(items.size(), 0);
+}
+
+TEST_F(CliHandlerTest, ExecuteListWithHelpFlag) {
+    ParsedCommand cmd;
+    cmd.command = Command::LIST;
+    cmd.options["help"] = "true";
+
+    int exitCode = handler->execute(cmd);
+    EXPECT_EQ(exitCode, 0);
+}
+
+TEST_F(CliHandlerTest, ExecuteCompleteWithHelpFlag) {
+    ParsedCommand cmd;
+    cmd.command = Command::COMPLETE;
+    cmd.options["help"] = "true";
+
+    int exitCode = handler->execute(cmd);
+    EXPECT_EQ(exitCode, 0);
+}
+
+TEST_F(CliHandlerTest, ExecuteDeleteWithHelpFlag) {
+    ParsedCommand cmd;
+    cmd.command = Command::DELETE;
+    cmd.options["help"] = "true";
+
+    int exitCode = handler->execute(cmd);
+    EXPECT_EQ(exitCode, 0);
+}
+
+TEST_F(CliHandlerTest, ExecuteSearchWithHelpFlag) {
+    ParsedCommand cmd;
+    cmd.command = Command::SEARCH;
+    cmd.options["help"] = "true";
+
+    int exitCode = handler->execute(cmd);
+    EXPECT_EQ(exitCode, 0);
+}
+
+TEST_F(CliHandlerTest, ExecuteVersionWithHelpFlag) {
+    ParsedCommand cmd;
+    cmd.command = Command::VERSION;
+    cmd.options["help"] = "true";
+
+    int exitCode = handler->execute(cmd);
+    EXPECT_EQ(exitCode, 0);
+}
+
+TEST_F(CliHandlerTest, ExecuteWithShortHelpFlag) {
+    ParsedCommand cmd;
+    cmd.command = Command::ADD;
+    cmd.options["h"] = "true";
+
+    int exitCode = handler->execute(cmd);
+    EXPECT_EQ(exitCode, 0);
+
+    // Verify no item was created
+    auto items = repository->findAll();
+    EXPECT_EQ(items.size(), 0);
+}
+
 // Test execute method
 TEST_F(CliHandlerTest, ExecuteAddCommand) {
     ParsedCommand cmd;
